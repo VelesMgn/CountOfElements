@@ -17,8 +17,12 @@ public class Main {
     private static <T> Map<T, Integer> count(T[] array) {
         Map<T, Integer> countOfElements = new HashMap<>();
 
+//        for (T element : array) {
+//            countOfElements.put(element, countOfElements.getOrDefault(element, 0) + 1);
+//        }
+
         for (T element : array) {
-            countOfElements.put(element, countOfElements.getOrDefault(element, 0) + 1);
+            countOfElements.merge(element, 1, Integer::sum);
         }
 
         return countOfElements;
